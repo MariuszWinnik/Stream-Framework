@@ -30,6 +30,7 @@ def setup_redis():
             password=config.get('password'),
             db=config['db'],
             decode_responses=config.get('decode_responses', True),
+            ssl=True if config['port'] == 6380 else False,
             # connection options
             socket_timeout=config.get('socket_timeout', None),
             socket_connect_timeout=config.get('socket_connect_timeout', None),
