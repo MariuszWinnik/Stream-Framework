@@ -41,6 +41,8 @@ def setup_redis():
             socket_keepalive=config.get('socket_keepalive', False),
             socket_keepalive_options=config.get('socket_keepalive_options', None),
             retry_on_timeout=config.get('retry_on_timeout', False),
+            connection_class=redis.SSLConnection,
+            ssl_cert_reqs=u'none'
         )
         pools[name] = pool
     return pools
