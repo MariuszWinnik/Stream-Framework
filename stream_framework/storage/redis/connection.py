@@ -18,7 +18,8 @@ def get_redis_connection(server_name='default'):
     config = settings.STREAM_REDIS_CONFIG["default"]
     return redis.StrictRedis(
         connection_pool=pool,
-        ssl=True if config['port'] == 6380 else False
+        ssl=True if config['port'] == 6380 else False,
+        password=config.get('password'),
     )
 
 
